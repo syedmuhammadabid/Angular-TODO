@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>State Route</title>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-ui-router.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/app.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>Zwitter</h1>
+                <div class="col-sm-6">
+                    <b>Title :</b>
+                    <input type="text" class="form-control" ng-model="tweet.title">
+                </div>
+                <div class="col-sm-6">
+                    <b>Description :</b>
+                    <input type="text" class="form-control" ng-model="tweet.description">
+                </div>
+                <div class="col-sm-6">
+                    <br>
+                <button class="btn btn-success" ng-click="setTweet(tweet)"><i class="glyphyicon glyphicon"></i> Tweet</button>
+                <button class="btn btn-warning" ng-click="clear()"><i class="glyphyicon glyphicon"></i> Clear</button>
+                <br><br>
+                </div>
+            </div>
+
+            <div class="col-sm-4" ng-repeat="tweet in tweets" style="border : 2px solid #888888; padding : 10px; ">
+                <div>
+
+                    <b>Id : </b><span>{{tweet.id}}</span><br/>
+                    <b>Date : </b><span>{{tweet.date}}</span><br/>
+                    <b>Title :</b><span> {{tweet.title}}</span><br/>
+                <b>Description :</b><span> {{tweet.description}}</span><br><br>
+                <button class="btn btn-primary" ng-click="edit(tweets[$index])">Edit</button>                   
+                <button class="btn btn-danger" ng-click="delete($index)">Delete</button>                   
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
